@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game - Spring Boot</title>
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+    <!-- Disco Lights for Victory Celebration -->
+    <div class="disco-lights" id="discoLights">
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+        <div class="disco-light"></div>
+    </div>
+
+    <!-- Middle Finger Emoji Animation -->
+    <div class="middle-finger-emoji" id="middleFingerEmoji">🖕</div>
+
+    <div class="game-container">
+        <h1>🎮 Rock Paper Scissors 🎮</h1>
+        <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 20px;">Powered by Spring Boot</p>
+        
+        <!-- Name Input Screen -->
+        <div class="name-input-screen" id="nameInputScreen">
+            <h2>Enter Player Names</h2>
+            <div class="name-input-container">
+                <div class="player-name-input">
+                    <h3>👤 Player 1</h3>
+                    <input type="text" class="name-input" id="player1Name" placeholder="Enter Player 1 name" maxlength="15">
+                </div>
+                <div class="player-name-input">
+                    <h3>👤 Player 2</h3>
+                    <input type="text" class="name-input" id="player2Name" placeholder="Enter Player 2 name" maxlength="15">
+                </div>
+                <button class="start-game-button" id="startGameButton" disabled>🚀 Start Game!</button>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area" id="gameArea">
+            <div class="score-board">
+                <div class="score">
+                    <div><span id="player1NameDisplay">Player 1</span>: <span id="player1Score">0</span></div>
+                </div>
+                <div class="score">
+                    <div><span id="player2NameDisplay">Player 2</span>: <span id="player2Score">0</span></div>
+                </div>
+            </div>
+
+            <div class="game-status" id="gameStatus">Player 1, make your choice!</div>
+
+            <div class="players-container">
+                <div class="player" id="player1Panel">
+                    <h2>👤 <span id="player1PanelName">Player 1</span></h2>
+                    <div class="choices">
+                        <button class="choice-btn" data-player="1" data-choice="rock">🪨</button>
+                        <button class="choice-btn" data-player="1" data-choice="paper">📄</button>
+                        <button class="choice-btn" data-player="1" data-choice="scissors">✂️</button>
+                    </div>
+                    <div class="selected-choice" id="player1Choice">Choose your weapon!</div>
+                    <button class="next-button" id="player1Next" style="display: none;">Next Player →</button>
+                </div>
+
+                <div class="player hidden" id="player2Panel">
+                    <h2>👤 <span id="player2PanelName">Player 2</span></h2>
+                    <div class="choices">
+                        <button class="choice-btn" data-player="2" data-choice="rock">🪨</button>
+                        <button class="choice-btn" data-player="2" data-choice="paper">📄</button>
+                        <button class="choice-btn" data-player="2" data-choice="scissors">✂️</button>
+                    </div>
+                    <div class="selected-choice" id="player2Choice">Choose your weapon!</div>
+                    <button class="next-button" id="player2Next" style="display: none;">Start Battle! ⚔️</button>
+                </div>
+            </div>
+
+            <div class="countdown-container" id="countdownContainer">
+                <div class="countdown-number" id="countdownNumber">3</div>
+                <div class="hand-animation" id="handAnimation">✊</div>
+                <div>Get ready for battle!</div>
+            </div>
+
+            <div class="battle-screen" id="battleScreen">
+                <h2>⚔️ BATTLE RESULTS ⚔️</h2>
+                <div class="vs-container">
+                    <div class="player-choice-display" id="player1BattleDisplay">
+                        <div id="player1BattleName">Player 1</div>
+                        <div class="choice-emoji" id="player1Display"></div>
+                        <div id="player1ChoiceText"></div>
+                    </div>
+                    <div style="font-size: 1.5em;">VS</div>
+                    <div class="player-choice-display" id="player2BattleDisplay">
+                        <div id="player2BattleName">Player 2</div>
+                        <div class="choice-emoji" id="player2Display"></div>
+                        <div id="player2ChoiceText"></div>
+                    </div>
+                </div>
+                <div id="battleResult" style="font-size: 1.5em; margin: 20px 0; font-weight: bold;"></div>
+                <button class="next-button" id="playAgainButton">Play Again 🔄</button>
+            </div>
+
+            <button class="reset-button" id="resetButton">🔄 Reset Game</button>
+        </div>
+    </div>
+
+    <script th:src="@{/js/game.js}"></script>
+</body>
+</html>
